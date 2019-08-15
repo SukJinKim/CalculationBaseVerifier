@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellReference;
 
 public class CalculationBaseVerifier {
-	private static final String PATH = "/Users/kimsukjin/Downloads/2019-1 자치회 다은 추가경정안(합숙비 추가한 최종본).xlsx"; //Add Path
+	private static final String PATH = "/Users/kimsukjin/Downloads/2019-1 자치회 다은 추가경정안(합숙비 추가한 최종본).xlsx"; //Add Path 
 	private static final int WIDTH = 20;
 	
 	private static List<PriceNCalcBase> PriceNCalcBaseList = new ArrayList<>();
@@ -72,29 +72,31 @@ public class CalculationBaseVerifier {
 		            	}
 		            }
 		        }
-			}
-
-			//calculate price on calculation base and add into list
-			for(PriceNCalcBase pnc: PriceNCalcBaseList) {
-				int priceOnCalBase = calcBaseCalculator.calculateCalcBase(pnc.getCalcBase());
-				priceOnCalcBaseList.add(priceOnCalBase);
-			}
-			
-			//Compare and print results
-			System.out.println(String.format("\n\n\t%-30s %-30s %-30s %-30s %-30s %-30s", "Price Position", "Price", "Calculation Base Position", "Calculation Base", "Price On Calculation Base", "same?"));
-			
-			if(PriceNCalcBaseList.size() == priceOnCalcBaseList.size()) {
-				for(int i = 0; i < PriceNCalcBaseList.size(); i++) {
-					priceNCalcBase = PriceNCalcBaseList.get(i);
-					priceOnCalcBase = (priceOnCalcBaseList.get(i) != -1) ? priceOnCalcBaseList.get(i).toString() : "Invalid Format" ;
-					
-					isPriceNCalcBaseSame = (priceNCalcBase.getPrice() == priceOnCalcBaseList.get(i));
-					
-					System.out.println(String.format("\t%-30s %-30d %-30s %-30s %-30s %-30b",
-							priceNCalcBase.getPriceCellPos(), priceNCalcBase.getPrice(), priceNCalcBase.getCalcBaseCellPos(), trim(priceNCalcBase.getCalcBase(), WIDTH), priceOnCalcBase,  isPriceNCalcBaseSame));
+				//calculate price on calculation base and add into list
+				for(PriceNCalcBase pnc: PriceNCalcBaseList) {
+					int priceOnCalBase = calcBaseCalculator.calculateCalcBase(pnc.getCalcBase());
+					priceOnCalcBaseList.add(priceOnCalBase);
 				}
-			}else {
-				System.err.println("...ERROR...");
+				
+				//Compare and print results
+				System.out.println(String.format("\n\n\t%-30s %-30s %-30s %-30s %-30s %-30s", "Price Position", "Price", "Calculation Base Position", "Calculation Base", "Price On Calculation Base", "same?"));
+				
+				if(PriceNCalcBaseList.size() == priceOnCalcBaseList.size()) {
+					for(int i = 0; i < PriceNCalcBaseList.size(); i++) {
+						priceNCalcBase = PriceNCalcBaseList.get(i);
+						priceOnCalcBase = (priceOnCalcBaseList.get(i) != -1) ? priceOnCalcBaseList.get(i).toString() : "Invalid Format" ;
+						
+						isPriceNCalcBaseSame = (priceNCalcBase.getPrice() == priceOnCalcBaseList.get(i));
+						
+						System.out.println(String.format("\t%-30s %-30d %-30s %-30s %-30s %-30b",
+								priceNCalcBase.getPriceCellPos(), priceNCalcBase.getPrice(), priceNCalcBase.getCalcBaseCellPos(), trim(priceNCalcBase.getCalcBase(), WIDTH), priceOnCalcBase,  isPriceNCalcBaseSame));
+					}
+				}else {
+					System.err.println("...ERROR...");
+				}
+				//clear all lists
+				PriceNCalcBaseList.clear();
+				priceOnCalcBaseList.clear();
 			}
 			
 		} catch (FileNotFoundException e) {
