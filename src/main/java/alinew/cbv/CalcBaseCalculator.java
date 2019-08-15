@@ -66,7 +66,7 @@ public class CalcBaseCalculator {
 		}
 	}
 	private static void extractOperators(String calcBase) {
-		String regex = "(\\((\\\\|\\₩)\\s*(\\d*,)*(\\d)+\\s*(\\*\\s*(\\d)+\\s*([가-힣]*))*\\))";
+		String regex = "((\\\\|\\₩)\\s*(\\d*,)*(\\d)+\\s*(\\*\\s*(\\d*,)*(\\d)+\\s*([가-힣]*))*)";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(calcBase);
 		
