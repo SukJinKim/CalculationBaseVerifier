@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1B2B42;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="209.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A788A8;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <TableView layoutX="27.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Sheet" />
+                <TableColumn prefWidth="75.0" text="Price Pos" />
+                  <TableColumn prefWidth="131.0" text="Price" />
+                  <TableColumn prefWidth="95.0" text="Calc Base Pos" />
+                  <TableColumn prefWidth="166.0" text="Calc Base" />
+                  <TableColumn prefWidth="140.0" text="Price on Calc Base" />
+                  <TableColumn prefWidth="97.0" text="Same?" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
