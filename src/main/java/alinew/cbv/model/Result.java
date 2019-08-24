@@ -10,8 +10,6 @@ public class Result {
 	private SimpleStringProperty calcBase;
 	private SimpleStringProperty priceOnCalcBase;
 	private SimpleStringProperty same;
-	
-
 
 	public Result(SimpleStringProperty sheet, SimpleStringProperty pricePos, SimpleStringProperty price,
 			SimpleStringProperty calcBasePos, SimpleStringProperty calcBase, SimpleStringProperty priceOnCalcBase,
