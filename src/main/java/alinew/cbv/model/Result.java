@@ -25,6 +25,7 @@ public class Result {
 		this.priceOnCalcBase = priceOnCalcBase;
 		this.same = same;
 	}
+	
 	public SimpleStringProperty getSheet() {
 		return sheet;
 	}
