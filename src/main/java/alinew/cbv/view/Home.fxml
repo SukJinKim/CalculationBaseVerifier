@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1b2b42;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1b2b42;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alinew.cbv.view.HomeController">
    <children>
       <AnchorPane prefHeight="602.0" prefWidth="434.0" style="-fx-background-color: black;">
          <children>
@@ -70,12 +70,12 @@
       </AnchorPane>
       <AnchorPane layoutX="579.0" layoutY="210.0" prefHeight="440.0" prefWidth="361.0" style="-fx-background-color: #6f3c8b;" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="60.0">
          <children>
-            <TextField layoutX="35.0" layoutY="115.0" prefHeight="27.0" prefWidth="218.0" promptText="Browse the file..." />
-            <Button layoutX="268.0" layoutY="115.0" mnemonicParsing="false" style="-fx-background-color: #D9C63C;" text="Browse" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+            <TextField fx:id="textField" layoutX="35.0" layoutY="115.0" prefHeight="27.0" prefWidth="218.0" promptText="Browse the file..." />
+            <Button fx:id="browseBtn" layoutX="268.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleOpenFileChooser" style="-fx-background-color: #D9C63C;" text="Browse" textFill="WHITE" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font></Button>
-            <Button layoutX="35.0" layoutY="343.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="307.0" style="-fx-background-color: #D9C63C;" text="Snap!" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+            <Button fx:id="snapBtn" layoutX="35.0" layoutY="343.0" mnemonicParsing="false" onAction="#showTableResult" prefHeight="27.0" prefWidth="307.0" style="-fx-background-color: #D9C63C;" text="Snap!" textFill="WHITE" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font></Button>
