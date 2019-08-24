@@ -10,60 +10,62 @@ public class Result {
 	private SimpleStringProperty calcBase;
 	private SimpleStringProperty priceOnCalcBase;
 	private SimpleStringProperty same;
-
-	public Result(SimpleStringProperty sheet, SimpleStringProperty pricePos, SimpleStringProperty price,
-			SimpleStringProperty calcBasePos, SimpleStringProperty calcBase, SimpleStringProperty priceOnCalcBase,
-			SimpleStringProperty same) {
+	
+	public Result(String sheet, String pricePos, String price,
+			String calcBasePos, String calcBase, String priceOnCalcBase,
+			String same) {
 		super();
-		this.sheet = sheet;
-		this.pricePos = pricePos;
-		this.price = price;
-		this.calcBasePos = calcBasePos;
-		this.calcBase = calcBase;
-		this.priceOnCalcBase = priceOnCalcBase;
-		this.same = same;
+		this.sheet = new SimpleStringProperty(sheet);
+		this.pricePos = new SimpleStringProperty(pricePos);
+		this.price = new SimpleStringProperty(price);
+		this.calcBasePos = new SimpleStringProperty(calcBasePos);
+		this.calcBase = new SimpleStringProperty(calcBase);
+		this.priceOnCalcBase = new SimpleStringProperty(priceOnCalcBase);
+		this.same = new SimpleStringProperty(same);
 	}
 	
-	public SimpleStringProperty getSheet() {
-		return sheet;
+	public String getSheet() {
+		return sheet.get();
 	}
-	public void setSheet(SimpleStringProperty sheet) {
-		this.sheet = sheet;
+	
+	public void setSheet(String sheet) {
+		this.sheet.set(sheet);
 	}
-	public SimpleStringProperty getPricePos() {
-		return pricePos;
+	
+	public String getPricePos() {
+		return pricePos.get();
 	}
-	public void setPricePos(SimpleStringProperty pricePos) {
-		this.pricePos = pricePos;
+	public void setPricePos(String pricePos) {
+		this.pricePos.set(pricePos);
 	}
-	public SimpleStringProperty getPrice() {
-		return price;
+	public String getPrice() {
+		return price.get();
 	}
-	public void setPrice(SimpleStringProperty price) {
-		this.price = price;
+	public void setPrice(String price) {
+		this.price.set(price);
 	}
-	public SimpleStringProperty getCalcBasePos() {
-		return calcBasePos;
+	public String getCalcBasePos() {
+		return calcBasePos.get();
 	}
-	public void setCalcBasePos(SimpleStringProperty calcBasePos) {
-		this.calcBasePos = calcBasePos;
+	public void setCalcBasePos(String calcBasePos) {
+		this.calcBasePos.set(calcBasePos);
 	}
-	public SimpleStringProperty getCalcBase() {
-		return calcBase;
+	public String getCalcBase() {
+		return calcBase.get();
 	}
-	public void setCalcBase(SimpleStringProperty calcBase) {
-		this.calcBase = calcBase;
+	public void setCalcBase(String calcBase) {
+		this.calcBase.set(calcBase);
 	}
-	public SimpleStringProperty getPriceOnCalcBase() {
-		return priceOnCalcBase;
+	public String getPriceOnCalcBase() {
+		return priceOnCalcBase.get();
 	}
-	public void setPriceOnCalcBase(SimpleStringProperty priceOnCalcBase) {
-		this.priceOnCalcBase = priceOnCalcBase;
+	public void setPriceOnCalcBase(String priceOnCalcBase) {
+		this.priceOnCalcBase.set(priceOnCalcBase);
 	}
-	public SimpleStringProperty getSame() {
-		return same;
+	public String getSame() {
+		return same.get();
 	}
-	public void setSame(SimpleStringProperty same) {
-		this.same = same;
+	public void setSame(String same) {
+		this.same.set(same);
 	}
 }

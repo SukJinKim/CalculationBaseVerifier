@@ -68,8 +68,9 @@ public class HomeController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Table.fxml"));
 			Parent root = loader.load();
 			
-			TableController controller = loader.getController();
-			controller.getResults(selectedFile);
+			TableController controller = (TableController)loader.getController();
+			controller.verifyCalcBase(selectedFile);
+			controller.displayTable();
 			
 			Scene scene = new Scene(root);
 			

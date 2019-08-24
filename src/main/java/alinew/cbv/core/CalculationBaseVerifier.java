@@ -2,6 +2,7 @@ package alinew.cbv.core;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,10 +21,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellReference;
 
 import alinew.cbv.model.Result;
-import javafx.beans.property.SimpleStringProperty;
 
 public class CalculationBaseVerifier {
-	private List<Result> resultList;
+	private List<Result> resultList = new ArrayList<>();
 	
 	public List<Result> run(File file) throws EncryptedDocumentException, IOException, NumberFormatException, ScriptException{
 		Workbook wb = WorkbookFactory.create(file);
@@ -41,14 +41,6 @@ public class CalculationBaseVerifier {
 		String calcBase;
 		int priceOnCalcBase;
 		boolean same;
-		
-		SimpleStringProperty formattedSheet;
-		SimpleStringProperty formattedPricePos;
-		SimpleStringProperty formattedPrice;
-		SimpleStringProperty formattedCalcBasePos;
-		SimpleStringProperty formattedCalcBase;
-		SimpleStringProperty formattedPriceOnCalcBase;
-		SimpleStringProperty formattedSame;
 		
 		for(Sheet sh: wb) {
 			for (Row row : sh) {
@@ -83,25 +75,9 @@ public class CalculationBaseVerifier {
 	                    
 	                    //add into resultList
 	                    if(priceOnCalcBase == -1) {	//A case of price on calcBase has invalid format
-	                    	formattedSheet = new SimpleStringProperty(sheet);
-	                    	formattedPricePos = new SimpleStringProperty(pricePos);
-	                    	formattedPrice = new SimpleStringProperty(Integer.toString(price));
-	                    	formattedCalcBasePos = new SimpleStringProperty(calcBasePos);
-	                    	formattedCalcBase = new SimpleStringProperty(calcBase);
-	                    	formattedPriceOnCalcBase = new SimpleStringProperty("Invalid format");
-	                    	formattedSame = new SimpleStringProperty(Boolean.toString(same));
-	                    	
-	                    	resultList.add(new Result(formattedSheet, formattedPricePos, formattedPrice, formattedCalcBasePos, formattedCalcBase, formattedPriceOnCalcBase, formattedSame));
+	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, "Invalid format", Boolean.toString(same)));
 	                    }else { 					//A case of price on calcBase has invalid format
-	                    	formattedSheet = new SimpleStringProperty(sheet);
-	                    	formattedPricePos = new SimpleStringProperty(pricePos);
-	                    	formattedPrice = new SimpleStringProperty(Integer.toString(price));
-	                    	formattedCalcBasePos = new SimpleStringProperty(calcBasePos);
-	                    	formattedCalcBase = new SimpleStringProperty(calcBase);
-	                    	formattedPriceOnCalcBase = new SimpleStringProperty(Integer.toString(priceOnCalcBase));
-	                    	formattedSame = new SimpleStringProperty(Boolean.toString(same));
-	                    	
-	                    	resultList.add(new Result(formattedSheet, formattedPricePos, formattedPrice, formattedCalcBasePos, formattedCalcBase, formattedPriceOnCalcBase, formattedSame));
+	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, Integer.toString(priceOnCalcBase), Boolean.toString(same)));
 	                    }
 	            	}
 	            }
@@ -110,6 +86,4 @@ public class CalculationBaseVerifier {
 		
 		return resultList;
 	}
-	
-
 }

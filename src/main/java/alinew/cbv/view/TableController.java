@@ -23,10 +23,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class TableController implements Initializable {
 	@FXML TableView<Result> tableView;
 	
-	private List<Result> results;
-
+	private List<Result> results; 
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	}
+	
+	public void verifyCalcBase(File file) throws EncryptedDocumentException, NumberFormatException, IOException, ScriptException{
+		CalculationBaseVerifier cbv = new CalculationBaseVerifier();
+	
+		results = cbv.run(file);
+	}
+	
+	public void displayTable() {
 		ObservableList<Result> resultList = FXCollections.observableArrayList(results);
 		
 		TableColumn tcSheet = tableView.getColumns().get(0);
@@ -43,40 +52,35 @@ public class TableController implements Initializable {
 		
 		TableColumn tcPrice = tableView.getColumns().get(2);
 		tcPrice.setCellValueFactory(
-			new PropertyValueFactory("pricePos")
+			new PropertyValueFactory("price")
 	    );
 		tcPrice.setStyle("-fx-alignment: CENTER;");
 		
 		TableColumn tcCalcBasePos = tableView.getColumns().get(3);
 		tcCalcBasePos.setCellValueFactory(
-			new PropertyValueFactory("pricePos")
+			new PropertyValueFactory("calcBasePos")
 	    );
 		tcCalcBasePos.setStyle("-fx-alignment: CENTER;");
 		
 		TableColumn tcCalcBase = tableView.getColumns().get(4);
 		tcCalcBase.setCellValueFactory(
-			new PropertyValueFactory("pricePos")
+			new PropertyValueFactory("calcBase")
 	    );
 		tcCalcBase.setStyle("-fx-alignment: CENTER;");
 		
 		TableColumn tcPriceOnCalcBase = tableView.getColumns().get(5);
 		tcPriceOnCalcBase.setCellValueFactory(
-			new PropertyValueFactory("pricePos")
+			new PropertyValueFactory("priceOnCalcBase")
 	    );
 		tcPriceOnCalcBase.setStyle("-fx-alignment: CENTER;");
 		
 		TableColumn tcSame = tableView.getColumns().get(6);
 		tcSame.setCellValueFactory(
-			new PropertyValueFactory("pricePos")
+			new PropertyValueFactory("same")
 	    );
 		tcSame.setStyle("-fx-alignment: CENTER;");
 		
 		tableView.setItems(resultList);
-	}
-	
-	public void getResults(File file) throws EncryptedDocumentException, NumberFormatException, IOException, ScriptException{
-		CalculationBaseVerifier cbv = new CalculationBaseVerifier();
-		results = cbv.run(file);
 	}
 
 }
