@@ -63,8 +63,10 @@ public class CalculationBaseVerifier {
 	                    if(priceCell.getCellType().equals(CellType.FORMULA)) { 		//A case of type of cell is FORMULA
 	                    	CellValue priceCellValue = evaluator.evaluate(priceCell);
 	                    	price = (int) priceCellValue.getNumberValue();
-	                    }else { 													//A case of type of cell is not FORMULA
+	                    }else if(priceCell.getCellType().equals(CellType.NUMERIC)){ //A case of type of cell is NUMERIC
 	                    	price = (int) priceCell.getNumericCellValue();
+	                    }else {														//A case of type of cell is STRING
+	                    	continue;
 	                    }
 	                    
 	                    //get priceOnCalcBase
