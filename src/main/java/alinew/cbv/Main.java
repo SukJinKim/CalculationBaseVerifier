@@ -23,7 +23,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		
 		
-		primaryStage.setTitle("Thanos");
+		primaryStage.setTitle("CBV(a.k.a Thanos)");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false); 
 		primaryStage.show();

@@ -58,7 +58,7 @@ public class CalculationBaseVerifier {
 	            		calcBase = cell.toString(); //get calcBase
 	            		
 	            		//get price
-	            		Cell priceCell = row.getCell(cell.getColumnIndex()-2);
+	            		Cell priceCell = row.getCell(cell.getColumnIndex()-2); 
 	            		
 	                    if(priceCell.getCellType().equals(CellType.FORMULA)) { 		//A case of type of cell is FORMULA
 	                    	CellValue priceCellValue = evaluator.evaluate(priceCell);
