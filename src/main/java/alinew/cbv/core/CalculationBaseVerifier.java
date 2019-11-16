@@ -30,7 +30,7 @@ public class CalculationBaseVerifier {
 		FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
 		CalcBaseCalculator calcBaseCalculator = new CalcBaseCalculator();
 
-		String regex = "((\\\\|\\₩)\\s*(\\d*,)*(\\d)+\\s*(\\*\\s*(\\d)+\\s*([가-힣]*))*)";
+		String regex = "((\\\\|\\₩)\\s*(\\d*,)*(\\d)+([가-힣]*)\\s*(\\*\\s*(\\d)+\\s*([가-힣]*))*)";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = null;
 		
