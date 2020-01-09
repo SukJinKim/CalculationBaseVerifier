@@ -2,7 +2,7 @@ package alinew.cbv;
 
 import java.io.IOException;
 
-import alinew.cbv.view.HomeController;
+import alinew.cbv.controller.HomeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

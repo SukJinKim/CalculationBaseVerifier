@@ -1,4 +1,4 @@
-package alinew.cbv.view;
+package alinew.cbv.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class HomeController implements Initializable {
 			dialog.initOwner(primaryStage);
 			dialog.setTitle("Result");
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Table.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Table.fxml"));
 			Parent root = loader.load();
 			
 			TableController controller = (TableController)loader.getController();

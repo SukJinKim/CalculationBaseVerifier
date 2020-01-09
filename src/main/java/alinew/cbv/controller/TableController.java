@@ -1,4 +1,4 @@
-package alinew.cbv.view;
+package alinew.cbv.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,3 +84,4 @@ public class TableController implements Initializable {
 	}
 
 }
+
