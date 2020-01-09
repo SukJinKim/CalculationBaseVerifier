@@ -9,11 +9,11 @@ public class Result {
 	private SimpleStringProperty calcBasePos;
 	private SimpleStringProperty calcBase;
 	private SimpleStringProperty priceOnCalcBase;
-	private SimpleStringProperty same;
+	private SimpleStringProperty isSame;
 	
 	public Result(String sheet, String pricePos, String price,
 			String calcBasePos, String calcBase, String priceOnCalcBase,
-			String same) {
+			String isSame) {
 		super();
 		this.sheet = new SimpleStringProperty(sheet);
 		this.pricePos = new SimpleStringProperty(pricePos);
@@ -21,7 +21,7 @@ public class Result {
 		this.calcBasePos = new SimpleStringProperty(calcBasePos);
 		this.calcBase = new SimpleStringProperty(calcBase);
 		this.priceOnCalcBase = new SimpleStringProperty(priceOnCalcBase);
-		this.same = new SimpleStringProperty(same);
+		this.isSame = new SimpleStringProperty(isSame);
 	}
 	
 	public String getSheet() {
@@ -63,9 +63,9 @@ public class Result {
 		this.priceOnCalcBase.set(priceOnCalcBase);
 	}
 	public String getSame() {
-		return same.get();
+		return isSame.get();
 	}
 	public void setSame(String same) {
-		this.same.set(same);
+		this.isSame.set(same);
 	}
 }

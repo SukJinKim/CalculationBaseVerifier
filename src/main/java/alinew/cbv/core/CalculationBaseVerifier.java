@@ -30,17 +30,17 @@ public class CalculationBaseVerifier {
 		FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
 		CalcBaseCalculator calcBaseCalculator = new CalcBaseCalculator();
 
-		String regex = "((\\\\|\\₩)\\s*(\\d+,)*(\\d)+([가-힣]*)\\s*(\\*\\s*(\\d+,)*(\\d)+\\s*([가-힣]*))*)";
-		Pattern p = Pattern.compile(regex);
+		String calcBaseRegex = "((\\\\|\\₩)\\s*(\\d+,)*(\\d)+([가-힣]*)\\s*(\\*\\s*(\\d+,)*(\\d)+\\s*([가-힣]*))*)";
+		Pattern p = Pattern.compile(calcBaseRegex);
 		Matcher m = null;
 		
-		String sheet;
-		String pricePos;
+		String sheet; //sheet name
+		String pricePos; //position where price is written
 		int price;
-		String calcBasePos;
-		String calcBase;
+		String calcBasePos; //position where calculation base is written
+		String calcBase; 
 		int priceOnCalcBase;
-		boolean same;
+		boolean isSame;
 		
 		for(Sheet sh: wb) {
 			for (Row row : sh) {
@@ -73,13 +73,13 @@ public class CalculationBaseVerifier {
 	                    priceOnCalcBase = calcBaseCalculator.calculateCalcBase(calcBase);
 	                    
 	                    //get same (priceOnCalcBase is -1 if it contains invalid format)
-	                    same = (priceOnCalcBase != -1 && price == priceOnCalcBase);
+	                    isSame = (priceOnCalcBase != -1 && price == priceOnCalcBase);
 	                    
 	                    //add into resultList
 	                    if(priceOnCalcBase == -1) {	//A case of price on calcBase has invalid format
-	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, "Invalid format", Boolean.toString(same)));
+	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, "Invalid format", Boolean.toString(isSame)));
 	                    }else { 					//A case of price on calcBase has invalid format
-	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, Integer.toString(priceOnCalcBase), Boolean.toString(same)));
+	                    	resultList.add(new Result(sheet, pricePos, Integer.toString(price), calcBasePos, calcBase, Integer.toString(priceOnCalcBase), Boolean.toString(isSame)));
 	                    }
 	            	}
 	            }

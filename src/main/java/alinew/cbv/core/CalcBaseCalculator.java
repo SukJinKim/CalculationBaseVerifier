@@ -10,8 +10,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class CalcBaseCalculator {
-	private static List<String> operandList = new ArrayList<>();
 	private static List<String> operatorList = new ArrayList<>();
+	private static List<String> operandList = new ArrayList<>();
 	
 	public int calculateCalcBase(String calcBase) throws NumberFormatException, ScriptException {
 		String formularizedCalcBase = formularizeCalcBase(calcBase);
@@ -27,8 +27,8 @@ public class CalcBaseCalculator {
 		}
 		
 		//clear lists
-		operandList.clear();
 		operatorList.clear();
+		operandList.clear();
 		
 		return priceOnCalcBase;
 	}
@@ -38,16 +38,16 @@ public class CalcBaseCalculator {
 		
 		extractOperands(calcBase);
 		extractOperators(calcBase);
-			
-		if(operandList.size() + 1 != operatorList.size()) {
+		
+		if(operatorList.size() + 1 != operandList.size()) { //Generally, the number of operator is 1 greater than the number of operands 
 			formula = "INVALID FORMAT";
 		}else {
-			for(int i = 0; i < operatorList.size(); i++) { //combine operands and operators to formularize calculation base
-				if(i == operatorList.size()-1) {
-					formula += operatorList.get(i);
+			for(int i = 0; i < operandList.size(); i++) { //combine operands and operators to formularize calculation base
+				if(i == operandList.size()-1) { //to add last operand
+					formula += operandList.get(i);
 					break;
 				}
-				formula += operatorList.get(i) + operandList.get(i);
+				formula += operandList.get(i) + operatorList.get(i);
 			}
 			
 			formula = formula.replaceAll("([a-zA-Z]|[가-힣]|\\,|(\\\\|\\₩))", ""); //remove miscellaneous characters such as English, Korean, ',' , '\' and '₩'.
@@ -56,22 +56,23 @@ public class CalcBaseCalculator {
 		return formula;
 	}
 	
-	private static void extractOperands(String calcBase) {
-		String regex = "(\\+|\\-)"; //operand are only + and -
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(calcBase);
-		
-		while(m.find()) {
-			operandList.add(m.group());
-		}
-	}
 	private static void extractOperators(String calcBase) {
-		String regex = "((\\\\|\\₩)\\s*(\\d+,)*(\\d)+([가-힣]*)\\s*(\\*\\s*(\\d+,)*(\\d)+\\s*([가-힣]*))*)";
-		Pattern p = Pattern.compile(regex);
+		String operatorRegex = "(\\+|\\-)"; //operand are only + and -
+		Pattern p = Pattern.compile(operatorRegex);
 		Matcher m = p.matcher(calcBase);
 		
 		while(m.find()) {
 			operatorList.add(m.group());
+		}
+	}
+
+	private static void extractOperands(String calcBase) {
+		String operandRegex = "((\\\\|\\₩)\\s*(\\d+,)*(\\d)+([가-힣]*)\\s*(\\*\\s*(\\d+,)*(\\d)+\\s*([가-힣]*))*)";
+		Pattern p = Pattern.compile(operandRegex);
+		Matcher m = p.matcher(calcBase);
+		
+		while(m.find()) {
+			operandList.add(m.group());
 		}
 	}
 }
