@@ -51,7 +51,8 @@ public class CalculationBaseVerifier {
 	            		
 	            		//get position of calcBase and price
 	            		CellReference calcBaseRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
-	            		CellReference priceRef = new CellReference(row.getRowNum(), cell.getColumnIndex()-2);
+	            		CellReference priceRef = new CellReference(row.getRowNum(), cell.getColumnIndex()-2); //Generally, the column index of price cell position is 2 less than the column index of calculation base cell position.
+	           
 	            		calcBasePos = calcBaseRef.formatAsString(); 
 	            		pricePos = priceRef.formatAsString();
 	            		
